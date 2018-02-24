@@ -1,6 +1,6 @@
 # A sample for [PagedList](https://github.com/troygoode/PagedList) with pagesize
 
-## How it looks like
+## How it looks like 
 
 Can see this page once launch the project.
 
