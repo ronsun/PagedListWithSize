@@ -4,7 +4,7 @@
 
 Can see this page once launch the project.
 
-![LayoutDemo](https://github.com/ronsun/PagedListWithSizeTemplate/blob/master/readme/LayoutDemo.png)
+![LayoutDemo](https://github.com/ronsun/PagedListWithSize/blob/master/readme/LayoutDemo.png)
 
 > original PagedList sample page now in `/TraditionalPaging/IndexOriginal`
 
