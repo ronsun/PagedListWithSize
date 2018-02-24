@@ -1,0 +1,29 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using PagedListWithSize.Models.Shared;
+
+@model PagedListWithSizeModel
+
+@{
+    var allPageSize = new List<int>() { 25, 50, 100 };
+}
+
+<link href="~/Content/PagedListWithSize.css" rel="stylesheet" />
+
+<div>
+    @Html.PagedListPager(Model.Data, Model.GeneratePageUrl, Model.Options)
+
+    <div class="pagesize-container">
+        <div class="pagesize-header">
+            <span>Page Size : </span>
+        </div>
+        <ul class="pagination">
+            @foreach (var size in allPageSize)
+            {
+                <li class="@(Model.Data.PageSize == size ? "active" : string.Empty)">
+                    <a href="@Model.GenerateSizeUrl(size)">@size</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

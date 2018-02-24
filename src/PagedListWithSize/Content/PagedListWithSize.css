@@ -1,0 +1,13 @@
+﻿.pagination-container {
+    display: inline-block;
+}
+
+.pagesize-container {
+    display: inline-block;
+    float: right;
+}
+
+.pagesize-header {
+    margin: 29.3px 10px;
+    float: left;
+}
