@@ -11,4 +11,4 @@ Can see this page once launch the project.
 
 ## How it work
 1. A simple partial view `_pagedListWithSize.cshtml` with model `PagedListWithSizeModel`.
-2. `PagedListWithSize.css` for style.
+2. `PagedListWithSize.css` for style. 
