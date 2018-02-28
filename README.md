@@ -29,7 +29,7 @@ Sample pages looks like:
 + Defined required properties in the model, include for original PagedList and list of page size.
 + Render the partial view in any view need to do pagiation, for an example in simple case:
 
-``` razor
+``` csharp
 @Html.Partial("_pagedListWithSize",
               new PagedListWithSizeModel()
               {
@@ -39,9 +39,29 @@ Sample pages looks like:
               })
 ```
 
+> Note: 
 > Please reference sample page for complex cases.
 
 ### Extend by HtmlHelper
 + Implement a customize HtmlHelper for it.
 + Call origianl PagedList in new helper and add something for page size list.
 + Gather required options for page size list into `PagedListSizeRenderOptions.cs` (similar with `PagedListRenderOptions` in original PagedList).
+
++ Use it just like other HtmlHelpers, simple cases like:
+``` csharp
+//basic
+@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, page => Url.Action("SampleByPartialView", new {page}), size => Url.Action("SampleByPartialView", new {size}))
+
+//with optional argument for PagedList
+@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, page => Url.Action("SampleByPartialView", new {page}), size => Url.Action("SampleByPartialView", new {size}), PagedListRenderOptions.Classic)
+
+//with optional argument for page size
+@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, page => Url.Action("SampleByPartialView", new {page}), size => Url.Action("SampleByPartialView", new {size}), pageSizeOptions: new PagedListSizeRenderOptions { HeaderText = "Total Pages: " })
+
+//with full arguments
+@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, page => Url.Action("SampleByPartialView", new {page}), size => Url.Action("SampleByPartialView", new {size}), PagedListRenderOptions.Classic, new PagedListSizeRenderOptions { HeaderText = "Total Pages: " })
+
+```
+
+> Note: 
+> Please reference sample page for complex cases.
