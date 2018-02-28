@@ -1,14 +1,47 @@
-# A sample for [PagedList](https://github.com/troygoode/PagedList) with pagesize
+# A sample for pagination with page size
 
-## How it looks like 
+## What's the project for?
 
-Can see this page once launch the project.
+This project created for the scenario that need to add option of page size base on [PagedList](https://github.com/troygoode/PagedList).  
 
+In real world, we often implement pagination and filter in the same time, so I also put a simple fitler in sample pages.
+
+There are 2 ways to extend PagedList and add list of page size - by **Partial View** or **Customize HtmlHelper**.  
+
+## How it looks like?
+
+There are three options when launch the project.  
++ **/Home/SampleOriginal** : Samples of original PagedList.
++ **/Home/SampleByPartialView** : Samples of page size list by partial view.
++ **/Home/SampleByHtmlHelper** : Samples of page size list by customize HtmlHelper.
+
+Sample pages looks like:  
 ![LayoutDemo](https://github.com/ronsun/PagedListWithSize/blob/master/readme/LayoutDemo.png)
 
-> original PagedList sample page now in `/TraditionalPaging/IndexOriginal`
 
+## How it work?
 
-## How it work
-1. A simple partial view `_pagedListWithSize.cshtml` with model `PagedListWithSizeModel`.
-2. `PagedListWithSize.css` for style. 
+### General
++ A css file `PagedListWithSize.css` for stylish.
+
+### Extend by partial view
++ A partial view `_pagedListWithSize.cshtml` with model `PagedListWithSizeModel.cs`, combine PagedList and size in this partial view and use classes defined in `PagedListWithSize.css` for stylish.
++ Defined required properties in the model, include for original PagedList and list of page size.
++ Render the partial view in any view need to do pagiation, for an example in simple case:
+
+``` razor
+@Html.Partial("_pagedListWithSize",
+              new PagedListWithSizeModel()
+              {
+                  Data = Model.PagedList,
+                  GeneratePageUrl = page => Url.Action("SampleByPartialView", new {page}),
+                  GenerateSizeUrl = size => Url.Action("SampleByPartialView", new {size});
+              })
+```
+
+> Please reference sample page for complex cases.
+
+### Extend by HtmlHelper
++ Implement a customize HtmlHelper for it.
++ Call origianl PagedList in new helper and add something for page size list.
++ Gather required options for page size list into `PagedListSizeRenderOptions.cs` (similar with `PagedListRenderOptions` in original PagedList).
