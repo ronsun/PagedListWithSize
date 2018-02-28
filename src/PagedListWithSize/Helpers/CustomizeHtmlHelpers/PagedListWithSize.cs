@@ -31,6 +31,11 @@ namespace PagedListWithSize.Helpers.CustomizeHtmlHelpers
 
         private static string GeneratePageSizeList(IPagedList pagedList, Func<int, string> generateSizeUrl, PagedListSizeRenderOptions options)
         {
+            if(pagedList.TotalItemCount <= 0)
+            {
+                return string.Empty;
+            }
+
             //header part, will looks like: 
             //  <div class="pagesize-header">Page Size :</div>
             var header = new TagBuilder("div");

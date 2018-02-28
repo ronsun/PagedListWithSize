@@ -23,11 +23,9 @@
 @Styles.Render("~/Content/PagedList.css")
 @Styles.Render("~/Content/PagedListWithSize.css")
 
-<h2>Traditional Paging</h2>
+<h2>Paging with size by HtmlHelper</h2>
 
-<p>Example of paging a list:</p>
-
-@Html.PagedListGoToPageForm((IPagedList)Model.PagedList, Url.Action("SampleByHtmlHelper"))
+<h3>With Filters</h3>
 
 @using (Html.BeginForm("SampleByHtmlHelper", "Home", FormMethod.Post))
 {
@@ -37,6 +35,10 @@
         <input type="submit" value="Go">
     </fieldset>
 }
+
+<p>Example of paging a list:</p>
+
+@Html.PagedListGoToPageForm((IPagedList)Model.PagedList, Url.Action("SampleByHtmlHelper"))
 
 <h3>List of @Model.PagedList.TotalItemCount Names (Page Size: @Model.PagedList.PageSize, Current Page: @Model.PagedList.PageNumber)</h3>
 <ol start="@Model.PagedList.FirstItemOnPage">
@@ -82,3 +84,15 @@
 
 <h3>Empty PagedList</h3>
 @Html.PagedListPagerWithSize(new string[0].ToPagedList(1, 10), _generatePageUrl, _generateSizeUrl)
+
+
+<h2>Custom Page Size Configurations</h2>
+
+<h3>Customize header of page size</h3>
+@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, pageSizeOptions: new PagedListSizeRenderOptions { HeaderText = "Total Pages: " })
+
+<h3>Customize list of page size</h3>
+<h5>If the default page size not in defined list, all page size item will not be actived</h5>
+@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, pageSizeOptions: new PagedListSizeRenderOptions { AllSizes = new List<int> { 5, 10, 15 } })
+
+<hr>
