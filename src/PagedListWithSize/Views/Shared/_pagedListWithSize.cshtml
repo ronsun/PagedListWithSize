@@ -10,20 +10,23 @@
 
 <link href="~/Content/PagedListWithSize.css" rel="stylesheet" />
 
-<div>
-    @Html.PagedListPager(Model.Data, Model.GeneratePageUrl, Model.Options)
+@if (Model.Data.TotalItemCount > 0)
+{
+    <div>
+        @Html.PagedListPager(Model.Data, Model.GeneratePageUrl, Model.Options)
 
-    <div class="pagesize-container">
-        <div class="pagesize-header">
-            <span>Page Size : </span>
+        <div class="pagesize-container">
+            <div class="pagesize-header">
+                <span>Page Size : </span>
+            </div>
+            <ul class="pagination">
+                @foreach (var size in allPageSize)
+                {
+                    <li class="@(Model.Data.PageSize == size ? "active" : string.Empty)">
+                        <a href="@Model.GenerateSizeUrl(size)">@size</a>
+                    </li>
+                }
+            </ul>
         </div>
-        <ul class="pagination">
-            @foreach (var size in allPageSize)
-            {
-                <li class="@(Model.Data.PageSize == size ? "active" : string.Empty)">
-                    <a href="@Model.GenerateSizeUrl(size)">@size</a>
-                </li>
-            }
-        </ul>
     </div>
-</div>
+}

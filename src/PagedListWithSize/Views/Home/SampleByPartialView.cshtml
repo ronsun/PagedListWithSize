@@ -22,11 +22,9 @@
 
 @Styles.Render("~/Content/PagedList.css")
 
-<h2>Traditional Paging</h2>
+<h2>Paging By PartialView</h2>
 
-<p>Example of paging a list:</p>
-
-@Html.PagedListGoToPageForm((IPagedList)Model.PagedList, Url.Action("SampleByPartialView"), "PageNumber")
+<h3>With Filters</h3>
 
 @using (Html.BeginForm("SampleByPartialView", "Home", FormMethod.Post))
 {
@@ -36,6 +34,10 @@
         <input type="submit" value="Go">
     </fieldset>
 }
+
+<p>Example of paging a list:</p>
+
+@Html.PagedListGoToPageForm((IPagedList)Model.PagedList, Url.Action("SampleByPartialView"), "PageNumber")
 
 <h3>List of @Model.PagedList.TotalItemCount Names (Page Size: @Model.PagedList.PageSize, Current Page: @Model.PagedList.PageSize)</h3>
 <ol start="@Model.PagedList.FirstItemOnPage">
@@ -159,3 +161,6 @@
                   GeneratePageUrl = _generatePageUrl,
                   GenerateSizeUrl = _generateSizeUrl,
               })
+
+
+<hr>
