@@ -1,16 +1,17 @@
-# A sample for pagination with page size
+# A sample for pagination with page size and filter
 
 ## What's the project for?
 
-This project created for the scenario that need to add option of page size base on [PagedList](https://github.com/troygoode/PagedList).  
+This project created for the scenario that need to add list of page size base on [PagedList](https://github.com/troygoode/PagedList). In real world, we often implement pagination and filter in the same time, so I also put a simple fitler in sample pages.
 
-In real world, we often implement pagination and filter in the same time, so I also put a simple fitler in sample pages.
+A couple of ways provided to implement list of page size base on PagedList - by **Partial View** or **Customize HtmlHelper**.  
 
-There are 2 ways to extend PagedList and add list of page size - by **Partial View** or **Customize HtmlHelper**.  
+## Dependency
+[PagedList](https://github.com/troygoode/PagedList)
 
 ## How it looks like?
 
-There are three options when launch the project.  
+Three links after launch the project.  
 + **/Home/SampleOriginal** : Samples of original PagedList.
 + **/Home/SampleByPartialView** : Samples of page size list by partial view.
 + **/Home/SampleByHtmlHelper** : Samples of page size list by customize HtmlHelper.
@@ -27,7 +28,7 @@ Sample pages looks like:
 ### Extend by partial view
 + A partial view `_pagedListWithSize.cshtml` with model `PagedListWithSizeModel.cs`, combine PagedList and size in this partial view and use classes defined in `PagedListWithSize.css` for stylish.
 + Defined required properties in the model, include for original PagedList and list of page size.
-+ Render the partial view in any view need to do pagiation, for an example in simple case:
++ Render the partial view in any view need pagiation, for an example in simple case:
 
 ``` csharp
 @Html.Partial("_pagedListWithSize",
@@ -40,7 +41,7 @@ Sample pages looks like:
 ```
 
 > Note: 
-> Please reference sample page for complex cases.
+> Please reference sample pages for complex cases.
 
 ### Extend by HtmlHelper
 + Implement a customize HtmlHelper for it.
@@ -64,4 +65,4 @@ Sample pages looks like:
 ```
 
 > Note: 
-> Please reference sample page for complex cases.
+> Please reference sample pages for complex cases.
