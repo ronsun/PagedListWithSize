@@ -1,4 +1,4 @@
-# A sample for pagination with page size and filter
+# Samples for pagination with page size and filter
 
 ## What's the project for?
 
