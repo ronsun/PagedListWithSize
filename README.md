@@ -9,7 +9,7 @@ A couple of ways provided to implement list of page size base on PagedList - by 
 ## Dependency
 [PagedList](https://github.com/troygoode/PagedList)
 
-## What does it looks like?
+## How it looks like?
 
 Three links after launch the project.  
 + **/Home/SampleOriginal** : Samples for original PagedList.
