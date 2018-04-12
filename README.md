@@ -9,12 +9,12 @@ A couple of ways provided to implement list of page size base on PagedList - by 
 ## Dependency
 [PagedList](https://github.com/troygoode/PagedList)
 
-## How it looks like?
+## What does it looks like?
 
 Three links after launch the project.  
-+ **/Home/SampleOriginal** : Samples of original PagedList.
-+ **/Home/SampleByPartialView** : Samples of page size list by partial view.
-+ **/Home/SampleByHtmlHelper** : Samples of page size list by customize HtmlHelper.
++ **/Home/SampleOriginal** : Samples for original PagedList.
++ **/Home/SampleByPartialView** : Samples for PagedList with size that implement by partial view.
++ **/Home/SampleByHtmlHelper** : Samples for PagedList with size that implement by customize HtmlHelper.
 
 Sample pages looks like:  
 ![LayoutDemo](https://github.com/ronsun/PagedListWithSize/blob/master/readme/LayoutDemo.png)
