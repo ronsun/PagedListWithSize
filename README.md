@@ -20,7 +20,7 @@ Sample pages looks like:
 ![LayoutDemo](https://github.com/ronsun/PagedListWithSize/blob/master/readme/LayoutDemo.png)
 
 
-## How to use it?
+## How does it work?
 
 ### General
 + A css file `PagedListWithSize.css` for stylish.
