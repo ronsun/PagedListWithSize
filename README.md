@@ -9,7 +9,7 @@ A couple of ways provided to implement list of page size base on PagedList - by 
 ## Dependency
 [PagedList](https://github.com/troygoode/PagedList)
 
-## How it looks like?
+## How it looks?
 
 Three links after launch the project.  
 + **/Home/SampleOriginal** : Samples for original PagedList.
@@ -20,7 +20,7 @@ Sample pages looks like:
 ![LayoutDemo](https://github.com/ronsun/PagedListWithSize/blob/master/readme/LayoutDemo.png)
 
 
-## How it work? And usage
+## How to use it?
 
 ### General
 + A css file `PagedListWithSize.css` for stylish.
