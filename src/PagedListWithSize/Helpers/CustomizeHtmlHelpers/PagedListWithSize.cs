@@ -1,8 +1,8 @@
 ﻿using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PagedList.Mvc;
 using System.Web.Mvc;
 
 namespace PagedListWithSize.Helpers.CustomizeHtmlHelpers
