@@ -25,74 +25,80 @@
 
 <h2>Paging with size by HtmlHelper</h2>
 
-<h3>With Filters</h3>
-
-@using (Html.BeginForm("SampleByHtmlHelper", "Home", FormMethod.Post))
-{
-    <fieldset>
-        <label for="PageNumber">EndWith:</label>
-        @Html.TextBoxFor(r => r.Filters.EndWith)
-        <input type="submit" value="Go">
-    </fieldset>
-}
-
-<p>Example of paging a list:</p>
-
-@Html.PagedListGoToPageForm((IPagedList)Model.PagedList, Url.Action("SampleByHtmlHelper"))
-
-<h3>List of @Model.PagedList.TotalItemCount Names (Page Size: @Model.PagedList.PageSize, Current Page: @Model.PagedList.PageNumber)</h3>
-<ol start="@Model.PagedList.FirstItemOnPage">
-    @foreach (var i in (IPagedList<string>)Model.PagedList)
+<!--Filters-->
+<div>
+    <h3>With Filters</h3>
+    @using (Html.BeginForm("SampleByHtmlHelper", "Home", FormMethod.Post))
     {
-        <li>@i</li>
+        <fieldset>
+            <label for="PageNumber">EndWith:</label>
+            @Html.TextBoxFor(r => r.Filters.EndWith)
+            <input type="submit" value="Go">
+        </fieldset>
     }
-</ol>
+</div>
 
-<h2>Out-of-the-box Pager Configurations</h2>
+<!--Data after filter-->
+<div>
+    <h3>List of @Model.PagedList.TotalItemCount Names (Page Size: @Model.PagedList.PageSize, Current Page: @Model.PagedList.PageNumber)</h3>
+    <ol start="@Model.PagedList.FirstItemOnPage">
+        @foreach (var i in (IPagedList<string>)Model.PagedList)
+        {
+            <li>@i</li>
+        }
+    </ol>
+</div>
 
-<h3>Default Paging Control</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl)
+<!--Paging samples-->
+<div>
+    <h2>Out-of-the-box Pager Configurations</h2>
 
-<h3>Classic Paging Control (always shows Previous/Next links, but sometimes they are disabled)</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.Classic)
+    @Html.PagedListGoToPageForm((IPagedList)Model.PagedList, Url.Action("SampleByHtmlHelper"), "PageNumber")
 
-<h3>Classic Paging Control (Classic +First and Last links)</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.ClassicPlusFirstAndLast)
+    <h3>Default Paging Control</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl)
 
-<h3>Minimal Paging Control</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.Minimal)
+    <h3>Classic Paging Control (always shows Previous/Next links, but sometimes they are disabled)</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.Classic)
 
-<h3>Minimal Paging Control w/ Page Count Text</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.MinimalWithPageCountText)
+    <h3>Classic Paging Control (Classic +First and Last links)</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.ClassicPlusFirstAndLast)
 
-<h3>Minimal Paging Control w/ Item Count Text</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.MinimalWithItemCountText)
+    <h3>Minimal Paging Control</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.Minimal)
 
-<h3>Page Numbers Only</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.PageNumbersOnly)
+    <h3>Minimal Paging Control w/ Page Count Text</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.MinimalWithPageCountText)
 
-<h3>Only Show Five Pages At A Time</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    <h3>Minimal Paging Control w/ Item Count Text</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.MinimalWithItemCountText)
 
-<h2>Custom Pager Configurations</h2>
+    <h3>Page Numbers Only</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.PageNumbersOnly)
 
-<h3>Custom Wording (<em>Spanish Translation Example</em>)</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, new PagedListRenderOptions { LinkToFirstPageFormat = "<< Primera", LinkToPreviousPageFormat = "< Anterior", LinkToNextPageFormat = "Siguiente >", LinkToLastPageFormat = "Última >>" })
+    <h3>Only Show Five Pages At A Time</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
-<h3>Show Range of Items For Each Page</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, new PagedListRenderOptions { FunctionToDisplayEachPageNumber = page => ((page - 1) * Model.PagedList.PageSize + 1).ToString() + "-" + (((page - 1) * Model.PagedList.PageSize) + Model.PagedList.PageSize).ToString(), MaximumPageNumbersToDisplay = 5 })
+    <h2>Custom Pager Configurations</h2>
 
-<h3>Empty PagedList</h3>
-@Html.PagedListPagerWithSize(new string[0].ToPagedList(1, 10), _generatePageUrl, _generateSizeUrl)
+    <h3>Custom Wording (<em>Spanish Translation Example</em>)</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, new PagedListRenderOptions { LinkToFirstPageFormat = "<< Primera", LinkToPreviousPageFormat = "< Anterior", LinkToNextPageFormat = "Siguiente >", LinkToLastPageFormat = "Última >>" })
+
+    <h3>Show Range of Items For Each Page</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, new PagedListRenderOptions { FunctionToDisplayEachPageNumber = page => ((page - 1) * Model.PagedList.PageSize + 1).ToString() + "-" + (((page - 1) * Model.PagedList.PageSize) + Model.PagedList.PageSize).ToString(), MaximumPageNumbersToDisplay = 5 })
+
+    <h3>Empty PagedList</h3>
+    @Html.PagedListPagerWithSize(new string[0].ToPagedList(1, 10), _generatePageUrl, _generateSizeUrl)
 
 
-<h2>Custom Page Size Configurations</h2>
+    <h2>Custom Page Size Configurations</h2>
 
-<h3>Customize header of page size</h3>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, pageSizeOptions: new PagedListSizeRenderOptions { HeaderText = "Total Pages: " })
+    <h3>Customize header of page size</h3>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, pageSizeOptions: new PagedListSizeRenderOptions { HeaderText = "Total Pages: " })
 
-<h3>Customize list of page size</h3>
-<h5>If the default page size not in defined list, all page size item will not be actived</h5>
-@Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, pageSizeOptions: new PagedListSizeRenderOptions { AllSizes = new List<int> { 5, 10, 15 } })
+    <h3>Customize list of page size</h3>
+    <h5>If the default page size not in defined list, all page size item will not be actived</h5>
+    @Html.PagedListPagerWithSize((IPagedList)Model.PagedList, _generatePageUrl, _generateSizeUrl, pageSizeOptions: new PagedListSizeRenderOptions { AllSizes = new List<int> { 5, 10, 15 } })
 
-<hr>
+    <hr>
+</div>
